@@ -1,0 +1,18 @@
+www.n45connect.com {
+    redir https://n45connect.com{uri} permanent
+}
+
+n45connect.com {
+    root * /var/www/n45connect
+    encode zstd gzip
+
+    header {
+        Strict-Transport-Security "max-age=31536000; includeSubDomains"
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "DENY"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        Permissions-Policy "camera=(), microphone=(), geolocation=()"
+    }
+
+    file_server
+}
